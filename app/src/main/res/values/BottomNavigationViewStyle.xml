@@ -1,0 +1,8 @@
+<resources>
+    <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconSize">24dp</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_height">56dp</item>
+    </style>
+</resources>
