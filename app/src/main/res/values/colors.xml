@@ -21,5 +21,13 @@
     <color name="colorAccentVariant">#E64A19</color>
     <color name="colorPrimaryDark">#F44336</color>
     <color name="colorAccent">#FF4081</color>
-<!--    <color name="colorPrimary">#FF5722</color>-->
+<!---->
+
+<!--    App theam color -->
+<!--    <color name="colorAccent">#F3BE62</color>-->
+<!--    <color name="colorAccent">#990000</color>-->
+<!--    <color name="colorAccent">#DA3422</color>-->
+<!--    <color name="colorAccent">#4DA537</color>-->
+<!--    <color name="colorAccent">#DA3422</color>-->
+
 </resources>
