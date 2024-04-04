@@ -5,4 +5,21 @@
     <color name="colorPrimary">#3F51B5</color>
 
     <color name="white">#FFFFFFFF</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="colorErrorContainer">#FFCDD2</color>
+    <color name="colorError">#B00020</color>
+    <color name="colorOnSurface">#000000</color>
+    <color name="colorSurfaceVariant">#F5F5F5</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnBackground">#212121</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorSecondaryVariant">#1976D2</color>
+    <color name="colorSecondary">#354959</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorPrimaryVariant">#E64A19</color>
+    <color name="colorOnPrimaryVariant">#E0E0E0</color>
+    <color name="colorAccentVariant">#E64A19</color>
+    <color name="colorPrimaryDark">#F44336</color>
+    <color name="colorAccent">#FF4081</color>
+<!--    <color name="colorPrimary">#FF5722</color>-->
 </resources>

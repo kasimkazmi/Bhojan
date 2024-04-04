@@ -33,15 +33,17 @@
         <!-- Your LinearLayout and Button code here -->
     </LinearLayout>
 
+
     <!-- Add the bottom navigation view here -->
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemHorizontalTranslationEnabled="false"
-        app:itemIconSize="20dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="16dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:menu="@menu/bottom_navigation_menu" />
-
 
 </LinearLayout>

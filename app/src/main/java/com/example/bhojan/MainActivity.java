@@ -30,13 +30,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.HOME) {
-                    // Handle Diet tab click
+                    // Handle Add Recipe tab click
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new HomeFragment())
+                            .commit();
                     return true;
                 } else if (item.getItemId() == R.id.Add) {
-                    // Handle Cuisines tab click
+                    // Handle Add Recipe  tab click
+                    // Handle Add Recipe tab click
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new AddRecipeFragment())
+                            .commit();
                     return true;
                 } else if (item.getItemId() == R.id.PROFILE) {
-                    // Handle Courses tab click
+                    // Handle Profile tab click
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new ProfileFragment())
+                            .commit();
                     return true;
                 }
                 return false;

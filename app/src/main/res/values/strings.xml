@@ -1,10 +1,21 @@
 <resources>
     <string name="app_name">Bhojan</string>
     <string name="title_activity_login">Login</string>
+    <string name="signup_message">Sign Up</string>
+    <string name="edit_text_username_signup">Username</string>
+    <string name="email_hint">Enter your email address</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="login_text">Already have an account? Log in</string>
     <string name="welcome_message">Welcome to our app!</string>
     <string name="username">Username</string>
     <string name="password_hint">Password</string>
     <string name="sign_up_text">Do not have an account? Sign up</string>
     <string name="login_button">Login</string>
+
+    <string name="home_fragment_text">Home</string>
+    <string name="fragment_add_recipe">fragment_add_recipe</string>
+    <string name="fragment_profile">fragment_profile</string>
+
+
 
 </resources>

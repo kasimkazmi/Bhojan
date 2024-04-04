@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "765465470878",
+    "project_id": "bhojan-405ba",
+    "storage_bucket": "bhojan-405ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765465470878:android:a95d6c9eb3e79c134b988f",
+        "android_client_info": {
+          "package_name": "com.example.bhojan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQZ85pziNM6an55M3XUSvF3UeEukUBzn0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

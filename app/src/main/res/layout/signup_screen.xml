@@ -24,12 +24,12 @@
             android:id="@+id/text_view_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome_message"
+            android:text="@string/signup_message"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edit_text_email"
+            android:id="@+id/edit_text_username_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username"
@@ -39,7 +39,17 @@
             android:autofillHints="username" />
 
         <EditText
-            android:id="@+id/edit_text_password"
+            android:id="@+id/edit_text_email_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email_hint"
+            android:inputType="textEmailAddress"
+            android:paddingTop="8dp"
+            android:minHeight="56dp"
+            android:autofillHints="email" />
+
+        <EditText
+            android:id="@+id/edit_text_password_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password_hint"
@@ -49,23 +59,24 @@
             android:autofillHints="password" />
 
         <Button
-            android:id="@+id/button_login"
+            android:id="@+id/button_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/login_button"
+            android:text="@string/signup_button"
             android:paddingTop="16dp"
             android:paddingBottom="16dp" />
 
+        <!-- Add an ID to the "Log in" text view -->
         <TextView
-            android:id="@+id/text_view_signup"
+            android:id="@+id/text_view_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="16dp"
-            android:text="@string/sign_up_text"
+            android:text="@string/login_text"
             android:textSize="16sp"
-            android:onClick="onLoginClick"/>
+            android:onClick="onLoginClick" />
 
     </LinearLayout>
 </RelativeLayout>
