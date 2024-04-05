@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
 
     // Declare a boolean variable to track double back presses
     private boolean doubleBackToExitPressedOnce;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,17 +52,16 @@ public class LoginActivity extends AppCompatActivity {
         // Get reference to the login Button
         loginButton = findViewById(R.id.button_login);
 
-        // Get the current user from FirebaseAuth
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-
         // Check if the user is already logged in
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null) {
             // User is already logged in. Start MainActivity and finish LoginActivity
-            startMainActivity();
+            String username = currentUser.getDisplayName();
+            String loginTime = new SimpleDateFormat("EEEE, MMM d", Locale.getDefault()).format(new Date());
+            startHomeActivity(username, loginTime);
             finish();
         } else {
             // User is not logged in. Proceed with the login process
-
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -76,9 +78,17 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
                                             // Login successful
-                                            FirebaseUser user = firebaseAuth.getCurrentUser();
-                                            startMainActivity(); // Start the MainActivity
-                                            finish(); // Finish the LoginActivity
+                                            FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+                                            String uid = currentUser.getUid();
+                                            String email = currentUser.getEmail();
+                                            String displayName = currentUser.getDisplayName();
+                                            Log.d("CurrentUser", "UID: " + uid);
+                                            Log.d("CurrentUser", "Email: " + email);
+                                            Log.d("CurrentUser", "Display Name: " + displayName);
+                                            String username = currentUser.getDisplayName();
+                                            String loginTime = new SimpleDateFormat("EEEE, MMM d", Locale.getDefault()).format(new Date());
+                                            startHomeActivity(username, loginTime);
+                                            finish();
                                         } else {
                                             // Login failed
                                             Toast.makeText(LoginActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
@@ -101,6 +111,25 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        }
+    private void startHomeActivity(String username, String loginTime) {
+        // Create a new Bundle object
+        Bundle bundle = new Bundle();
+
+        // Put the username and login time as key-value pairs
+        bundle.putString("username", username);
+        bundle.putString("login_time", loginTime);
+
+        // Create a new instance of the HomeFragment
+        HomeFragment homeFragment = new HomeFragment();
+
+        // Pass the Bundle object to the HomeFragment using the setArguments() method
+        homeFragment.setArguments(bundle);
+
+        // Start the MainActivity and add the HomeFragment to the container
+        Intent intent = new Intent(this, MainActivity.class);
+//        intent.putExtra("fragment", homeFragment);
+        startActivity(intent);
     }
 
     @Override
@@ -119,10 +148,5 @@ public class LoginActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
-    }
-
-    private void startMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }

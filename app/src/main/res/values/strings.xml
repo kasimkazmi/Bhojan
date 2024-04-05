@@ -11,10 +11,18 @@
     <string name="password_hint">Password</string>
     <string name="sign_up_text">Do not have an account? Sign up</string>
     <string name="login_button">Login</string>
+    <string name="confirm_password_hint">Confirm Password</string>
 
     <string name="home_fragment_text">Home</string>
+    <string name="search_hint">Search..</string>
     <string name="fragment_add_recipe">fragment_add_recipe</string>
     <string name="fragment_profile">fragment_profile</string>
+    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
+
+    search_hint
+
+
+
 
 
 
