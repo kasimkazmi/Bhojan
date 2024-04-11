@@ -9,12 +9,28 @@
     <string name="welcome_message">Welcome to our app!</string>
     <string name="username">Username</string>
     <string name="password_hint">Password</string>
+    <string name="email_text">Email</string>
+
+    <string name="forgot_password_text">Forgot Password</string>
+    <string name="send_reset_link_button">Reset</string>
+    <string name="back_to_login">Back to Login</string>
+
     <string name="sign_up_text">Do not have an account? Sign up</string>
     <string name="login_button">Login</string>
+    <string name="confirm_password_hint">Confirm Password</string>
 
     <string name="home_fragment_text">Home</string>
+
+    <string name="default_web_client_id">765465470878-7g5rd2gucq4gjjnsrl0t6r43vggi2jt9.apps.googleusercontent.com</string>
+    <string name="search_hint">Search..</string>
     <string name="fragment_add_recipe">fragment_add_recipe</string>
     <string name="fragment_profile">fragment_profile</string>
+    <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
+
+
+
+
+
 
 
 

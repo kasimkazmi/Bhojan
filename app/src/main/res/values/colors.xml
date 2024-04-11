@@ -7,7 +7,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorOnError">#FFFFFF</color>
     <color name="colorErrorContainer">#FFCDD2</color>
-    <color name="colorError">#B00020</color>
+    <color name="themeColor">#990000</color>
     <color name="colorOnSurface">#000000</color>
     <color name="colorSurfaceVariant">#F5F5F5</color>
     <color name="colorSurface">#FFFFFF</color>
@@ -21,6 +21,7 @@
     <color name="colorAccentVariant">#E64A19</color>
     <color name="colorPrimaryDark">#F44336</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="gray">#808080</color>
 <!---->
 
 <!--    App theam color -->

@@ -3,6 +3,16 @@
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-<!--        <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>-->
+    </style>
+   <!-- <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconSize">24dp</item>
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_height">56dp</item>
+    </style>-->
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_margin">16dp</item>
     </style>
 </resources>

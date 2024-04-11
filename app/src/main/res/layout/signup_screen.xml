@@ -57,7 +57,25 @@
             android:paddingTop="8dp"
             android:minHeight="56dp"
             android:autofillHints="password" />
+        <EditText
+            android:id="@+id/edit_text_confirm_password_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password_hint"
+            android:inputType="textPassword"
+            android:paddingTop="8dp"
+            android:minHeight="56dp"
+            android:autofillHints="confirm_password" />
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            android:indeterminateTint="@color/themeColor" />
         <Button
             android:id="@+id/button_signup"
             android:layout_width="wrap_content"
