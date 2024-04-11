@@ -1,10 +1,13 @@
 package com.example.bhojan;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +33,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passwordEditText;
     private EditText confirmPasswordEditText;
+    private ProgressBar progressBar;
+
 
     // Initialize Firebase Authentication object
     private FirebaseAuth firebaseAuth;
@@ -38,6 +43,21 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_screen);
+
+
+        // Hide the loader by default
+        progressBar = findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.GONE);
+
+        // Check if the network is available
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getActiveNetworkInfo() == null || !connectivityManager.getActiveNetworkInfo().isConnected()) {
+            // Network is not available. Show a message to the user
+            Toast.makeText(this, "Network is not available. Please check your internet connection.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
 
         // Initialize EditText fields with corresponding views
         usernameEditText = findViewById(R.id.edit_text_username_signup);
@@ -59,6 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String password = passwordEditText.getText().toString();
                 String confirmPassword = confirmPasswordEditText.getText().toString();
 
+
                 // Validate user input
                 if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -69,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
 
                 // Create a new user account with Firebase Authentication
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -78,6 +100,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign up successful
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
+                                    // Hide the ProgressBar
+                                    progressBar.setVisibility(View.GONE);
 
                                     // Set the user's display name to the username
                                     user.updateProfile(new UserProfileChangeRequest.Builder().setDisplayName(username).build());
@@ -115,6 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start LoginActivity
+                progressBar.setVisibility(View.VISIBLE);
                 Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                 startActivity(intent);
             }

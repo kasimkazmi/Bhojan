@@ -12,7 +12,20 @@
           "package_name": "com.example.bhojan"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "765465470878-tl0hfdfehbhlr92146idm0e958d414da.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bhojan",
+            "certificate_hash": "1b400370bae89c69737ef4253cf306386c7543fd"
+          }
+        },
+        {
+          "client_id": "765465470878-7g5rd2gucq4gjjnsrl0t6r43vggi2jt9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDQZ85pziNM6an55M3XUSvF3UeEukUBzn0"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765465470878-7g5rd2gucq4gjjnsrl0t6r43vggi2jt9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
