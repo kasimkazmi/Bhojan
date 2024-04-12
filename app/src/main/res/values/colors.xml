@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="customColorPrimary">#FF5733</color>
-    <color name="colorPrimary">#3F51B5</color>
-
     <color name="white">#FFFFFFFF</color>
     <color name="colorOnError">#FFFFFF</color>
     <color name="colorErrorContainer">#FFCDD2</color>
+    <color name="colorError">#B00020</color>
     <color name="themeColor">#990000</color>
-    <color name="colorOnSurface">#000000</color>
+    <color name="black">#000000</color>
     <color name="colorSurfaceVariant">#F5F5F5</color>
     <color name="colorSurface">#FFFFFF</color>
     <color name="colorOnBackground">#212121</color>
@@ -18,17 +15,11 @@
     <color name="colorOnPrimary">#FFFFFF</color>
     <color name="colorPrimaryVariant">#E64A19</color>
     <color name="colorOnPrimaryVariant">#E0E0E0</color>
-    <color name="colorAccentVariant">#E64A19</color>
-    <color name="colorPrimaryDark">#F44336</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="gray">#808080</color>
+    <color name="colorPrimary">#E64A19</color>
+
+    <color name="gray">#808080</color> <!---->
+
 <!---->
 
-<!--    App theam color -->
-<!--    <color name="colorAccent">#F3BE62</color>-->
-<!--    <color name="colorAccent">#990000</color>-->
-<!--    <color name="colorAccent">#DA3422</color>-->
-<!--    <color name="colorAccent">#4DA537</color>-->
-<!--    <color name="colorAccent">#DA3422</color>-->
 
 </resources>

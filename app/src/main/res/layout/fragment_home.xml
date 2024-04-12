@@ -1,14 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"> <!-- sets the background color of the screen to white -->
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:background="@drawable/header1"> <!-- sets the background image of the top section -->
+        android:layout_height="240dp"
+        android:background="@drawable/header1">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
@@ -20,7 +20,7 @@
             android:label="Recipes"
             android:padding="4dp"
             android:queryBackground="@android:color/white"
-            android:queryHint="Search..." /> <!-- sets up the search view widget -->
+            android:queryHint="Search..." />
     </RelativeLayout>
 
     <RelativeLayout
@@ -28,42 +28,42 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/greeting"
+            android:id="@+id/greeting_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:layout_centerHorizontal="true"
-            android:textStyle="bold" /> <!-- sets up the greeting text view -->
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/personalizegreeting"
+            android:id="@+id/personalized_greeting_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/greeting"
+            android:layout_below="@id/greeting_textView"
             android:layout_marginTop="4dp"
             android:text=""
             android:layout_centerHorizontal="true"
 
-            android:textSize="16sp" /> <!-- sets up the personalized greeting text view -->
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/login_time"
+            android:id="@+id/login_time_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/personalizegreeting"
+            android:layout_below="@id/personalized_greeting_textView"
             android:layout_marginTop="4dp"
             android:text=""
             android:layout_centerHorizontal="true"
 
-            android:textSize="14sp" /> <!-- sets up the login time text view -->
+            android:textSize="14sp" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp"> <!-- sets up the linear layout for the dish recommendation section -->
+        android:padding="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -79,75 +79,27 @@
                 android:text="Your recommendation"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                android:textStyle="bold" /> <!-- sets up the recommendation text view -->
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center|right"
-                android:gravity="center_vertical"
                 android:text="View All"
-                android:layout_marginRight="12dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/com_facebook_blue"
-                android:textSize="12sp"
-                android:textStyle="bold" /> <!-- sets up the view all text view -->
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
         </RelativeLayout>
-
-        <ScrollView
+            <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recipe_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!-- Add your existing views here -->
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="10dp">
-
-                    <ImageView
-                        android:id="@+id/img"
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="fill"
-                        android:contentDescription="Dish Description"
-                        android:src="@drawable/bg" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|right"
-                        android:layout_marginTop="20dp"
-                        android:paddingRight="25dp"
-                        android:text="Dish Name"
-                        android:textColor="@color/black"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start|right"
-                        android:layout_marginStart="260dp"
-                        android:layout_marginTop="60dp"
-                        android:text="Meal Type"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                </androidx.cardview.widget.CardView>
-
-            </RelativeLayout>
-
-        </ScrollView>
     </LinearLayout>
+
 
 </LinearLayout>

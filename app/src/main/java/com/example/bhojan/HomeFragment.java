@@ -7,39 +7,43 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-public class HomeFragment extends Fragment {
-    private TextView greeting;
-    private TextView loginTime;
-    private TextView personalizegreeting;
-    private SearchView searchView;
 
-    @Nullable
+public class HomeFragment extends Fragment {
+
+    private FirebaseUser user;
+    private FirestoreRecyclerOptions<Recipe> options;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private MutableLiveData<List<Recipe>> recipesLiveData = new MutableLiveData<>();
+    private List<Recipe> recipeList;
+    private RecyclerView recyclerView;
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Initialize views
-        greeting = rootView.findViewById(R.id.greeting);
-        loginTime = rootView.findViewById(R.id.login_time);
-        personalizegreeting = rootView.findViewById(R.id.personalizegreeting);
 
-        // Initialize the search view
-        searchView = rootView.findViewById(R.id.search_view);
 
-        // Get the current user from Firebase
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+           // Get the user from Firebase
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         // Check if the user is not null
         if (user != null) {
@@ -47,37 +51,45 @@ public class HomeFragment extends Fragment {
             String username = user.getDisplayName();
 
             // Display the username and login time in the UI
+            TextView greeting = rootView.findViewById(R.id.greeting_textView);
+            TextView loginTime = rootView.findViewById(R.id.login_time_textView);
+            TextView personalizegreeting = rootView.findViewById(R.id.personalized_greeting_textView);
 
             // Set the greeting text with the username
             greeting.setText("Greetings " + username + "!");
 
             // Set the login time text with the login time
-            this.loginTime.setText(new SimpleDateFormat("EEEE, MMM d", Locale.getDefault()).format(new Date()));
+            loginTime.setText(new SimpleDateFormat("EEEE, MMM d", Locale.getDefault()).format(new Date()));
 
             // Set the personalized greeting text based on the time of day and meal type
             Calendar calendar = Calendar.getInstance();
             int hour = calendar.get(Calendar.HOUR_OF_DAY);
 
-            String mealType = "";
-            if (hour >= 0 && hour < 12) {
+            String mealType;
+            if (hour < 12) {
                 mealType = "breakfast";
-            } else if (hour >= 12 && hour < 16) {
+            } else if (hour < 17) {
                 mealType = "lunch";
-            } else if (hour >= 16 && hour < 20) {
+            } else if (hour < 20) {
                 mealType = "dinner";
             } else {
                 mealType = "snack";
             }
 
-            String personalizedGreetingText = "";
-            if (mealType.equals("breakfast")) {
-                personalizedGreetingText = "What's for breakfast today?";
-            } else if (mealType.equals("lunch")) {
-                personalizedGreetingText = "What's for lunch today?";
-            } else if (mealType.equals("dinner")) {
-                personalizedGreetingText = "What's for dinner tonight?";
-            } else {
-                personalizedGreetingText = "What's a good snack for now?";
+            String personalizedGreetingText;
+            switch (mealType) {
+                case "breakfast":
+                    personalizedGreetingText = "What's for breakfast today?";
+                    break;
+                case "lunch":
+                    personalizedGreetingText = "What's for lunch today?";
+                    break;
+                case "dinner":
+                    personalizedGreetingText = "What's for dinner tonight?";
+                    break;
+                default:
+                    personalizedGreetingText = "What's a good snack for now?";
+                    break;
             }
 
             personalizegreeting.setText(personalizedGreetingText);
@@ -87,21 +99,9 @@ public class HomeFragment extends Fragment {
             Log.d("HomeFragment", "User is null");
         }
 
-        // Set up a search query listener
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Handle search query submission
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Handle search query changes
-                return false;
-            }
-        });
 
         return rootView;
     }
+
+
 }

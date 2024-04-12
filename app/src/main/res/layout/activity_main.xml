@@ -8,6 +8,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--
+        app:navGraph="@navigation/nav_graph"
+-->
+        />
     <!-- Add a FrameLayout here to hold the fragment container -->
     <FrameLayout
         android:id="@+id/fragment_container"
