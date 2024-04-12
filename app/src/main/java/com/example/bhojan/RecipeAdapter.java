@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 public  class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
@@ -35,10 +33,11 @@ public  class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeVie
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         Recipe recipe = recipes.get(position);
         holder.dishNameTextView.setText(recipe.getDishName());
-        holder.mealTypeTextView.setText(recipe.getDescription());
-        Picasso.get().load(recipe.getImageUrl()).into(holder.imageView);
+        holder.mealTypeTextView.setText(recipe.getMealType());
+        holder.ingredientsTextView.setText(recipe.getIngredients());
+        holder.descriptionTextView.setText(recipe.getDescription());
+        holder.imageView.setImageBitmap(recipe.getImage());
     }
-
     @Override
     public int getItemCount() {
         return recipes.size();
@@ -47,12 +46,15 @@ public  class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeVie
     static class RecipeViewHolder extends RecyclerView.ViewHolder {
         TextView dishNameTextView;
         TextView mealTypeTextView;
+        TextView ingredientsTextView;
+        TextView descriptionTextView;
         ImageView imageView;
-
         RecipeViewHolder(View view) {
             super(view);
             dishNameTextView = view.findViewById(R.id.dish_name_text_view);
             mealTypeTextView = view.findViewById(R.id.meal_type_text_view);
+            ingredientsTextView = view.findViewById(R.id.ingredients_text_view);
+            descriptionTextView = view.findViewById(R.id.description_text_view);
             imageView = view.findViewById(R.id.img);
         }
     }

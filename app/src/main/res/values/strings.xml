@@ -27,7 +27,7 @@
     <string name="mealType">Enter Meal Type</string>
     <string name="instructions">Enter Steps to Make in Brief </string>
     <string name="fragment_add_recipe">fragment_add_recipe</string>
-    <string name="fragment_profile">fragment_profile</string>
+    <string name="fragment_profile">Profile Screen</string>
     <string name="facebook_app_id">YOUR_FACEBOOK_APP_ID</string>
     <string name="add_receipe">Add Receipe</string>
     <string name="ingredients"> Enter Ingredients</string>

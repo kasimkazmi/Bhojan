@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
     private Button logoutButton;
+    private TextView usernameTextView, emailTextView, loginMethodTextView;
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient googleSignInClient;
 
@@ -39,8 +45,11 @@ public class ProfileFragment extends Fragment {
                 .build();
         googleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
 
-        // Get reference to the logout Button
+        // Get references to the UI elements
         logoutButton = rootView.findViewById(R.id.button_logout);
+        usernameTextView = rootView.findViewById(R.id.userNameTextView);
+        emailTextView = rootView.findViewById(R.id.emailTextView);
+        loginMethodTextView = rootView.findViewById(R.id.loginMethodTextView);
 
         // Set up the logout button click listener
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +59,37 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        // Fetch and display user details
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            String username = currentUser.getDisplayName();
+            String email = currentUser.getEmail();
+            String loginMethod = getLoginMethod(currentUser);
+            if (username != null) {
+                usernameTextView.setText(username);
+            }
+            if (email != null) {
+                emailTextView.setText(email);
+            }
+            if (loginMethod != null) {
+                loginMethodTextView.setText("Login Method: "+ loginMethod);
+            }
+        }
+
         return rootView;
+    }
+
+    private String getLoginMethod(FirebaseUser user) {
+        List<? extends UserInfo> providerData = user.getProviderData();
+        for (UserInfo userInfo : providerData) {
+            String providerId = userInfo.getProviderId();
+            if (providerId.equals("google.com")) {
+                return "Google";
+            } else if (providerId.equals("password")) {
+                return "Email";
+            }
+        }
+        return null;
     }
 
     private void handleLogout() {

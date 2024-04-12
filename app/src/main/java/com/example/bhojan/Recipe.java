@@ -7,20 +7,14 @@ public class Recipe {
     private String mealType;
     private String ingredients;
     private String description;
-    private String imageUrl;
+    private Bitmap image;
 
-    public Recipe() {
-        // Default constructor required for Firestore
-    }
-
-    public Recipe(String dishName, String mealType, String ingredients, String description) {
+    public Recipe(String dishName, String mealType, String ingredients, String description, Bitmap image) {
         this.dishName = dishName;
         this.mealType = mealType;
         this.ingredients = ingredients;
         this.description = description;
-    }
-
-    public Recipe(String dishName, String mealType, String ingredients, String description, Bitmap image) {
+        this.image = image;
     }
 
     public String getDishName() {
@@ -39,11 +33,7 @@ public class Recipe {
         return description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public Bitmap getImage() {
+        return image;
     }
 }

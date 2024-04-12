@@ -46,8 +46,7 @@ public class ForgotPassword extends AppCompatActivity {
         // Get references to the EditText and Button
         emailEditText = findViewById(R.id.edit_text_email);
         resetPasswordButton = findViewById(R.id.button_send_reset_link);
-
-        // Add a TextWatcher to the EditText to enable/disable the reset button based on the input
+// Add a TextWatcher to the EditText to enable/disable the reset button based on the input
         emailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -63,6 +62,7 @@ public class ForgotPassword extends AppCompatActivity {
                 } else {
                     // Enable the reset button if the email input field is not empty
                     resetPasswordButton.setEnabled(true);
+                    resetPasswordButton.setBackgroundColor(getResources().getColor(R.color.themeColor));
                 }
             }
 
@@ -71,7 +71,6 @@ public class ForgotPassword extends AppCompatActivity {
                 // Not needed for this use case
             }
         });
-
         // Set up the reset password button click listener
         resetPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override

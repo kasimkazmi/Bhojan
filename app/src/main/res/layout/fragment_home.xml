@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Header RelativeLayout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="@drawable/header1">
+        android:layout_height="260dp"
+        android:background="@drawable/header3">
 
+        <!-- SearchView -->
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
             style="@style/SearchViewStyle"
@@ -23,10 +25,14 @@
             android:queryHint="Search..." />
     </RelativeLayout>
 
+    <!-- Greeting RelativeLayout -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
 
+        <!-- Greeting TextViews -->
         <TextView
             android:id="@+id/greeting_textView"
             android:layout_width="wrap_content"
@@ -43,7 +49,6 @@
             android:layout_marginTop="4dp"
             android:text=""
             android:layout_centerHorizontal="true"
-
             android:textSize="16sp" />
 
         <TextView
@@ -54,21 +59,23 @@
             android:layout_marginTop="4dp"
             android:text=""
             android:layout_centerHorizontal="true"
-
             android:textSize="14sp" />
 
     </RelativeLayout>
 
+    <!-- Recommendation LinearLayout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="8dp">
 
+        <!-- Recommendation TextViews -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/recommendation_text"
@@ -91,15 +98,27 @@
                 android:textSize="14sp" />
 
         </RelativeLayout>
-            <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recipe_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+              >
+
+                <!-- RecyclerView for recommended items -->
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recipe_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:cardCornerRadius="50dp"
+                    app:cardElevation="10dp" />
+
+                <!-- Add more recommended item views here -->
+
+            </RelativeLayout>
     </LinearLayout>
-
-
 </LinearLayout>

@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -124,8 +126,6 @@ public class LoginActivity extends AppCompatActivity {
                                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
-                                        // Hide the ProgressBar
-                                        progressBar.setVisibility(View.GONE);
 
                                         if (task.isSuccessful()) {
                                             // Login successful
@@ -140,6 +140,10 @@ public class LoginActivity extends AppCompatActivity {
                                             String loginTime = new SimpleDateFormat("EEEE, MMM d", Locale.getDefault()).format(new Date());
                                             startHomeActivity(username, loginTime);
                                             finish();
+                                            // Hide the ProgressBar
+                                            progressBar.setVisibility(View.GONE);
+
+
                                         } else {
                                             // Login failed
                                             Toast.makeText(LoginActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
@@ -180,7 +184,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         TextView forgotTextView = findViewById(R.id.text_view_forgot_password);
+        SpannableString content = new SpannableString(getString(R.string.forgot_password_text));
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        forgotTextView.setText(content);
 
         forgotTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,7 +272,6 @@ public class LoginActivity extends AppCompatActivity {
 
         // Start the MainActivity and add the HomeFragment to the container
         Intent intent = new Intent(this, MainActivity.class);
-//        intent.putExtra("fragment", homeFragment);
         startActivity(intent);
     }
 
@@ -274,6 +281,9 @@ public class LoginActivity extends AppCompatActivity {
             super.onBackPressed();
             return;
         }
+
+        progressBar.setVisibility(View.GONE);
+
 
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();

@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Add your fragment transaction code here
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, new HomeFragment())
+                .commit();
 
         // Set up window insets listener
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), new WindowInsetsListener());

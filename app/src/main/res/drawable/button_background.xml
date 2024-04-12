@@ -2,12 +2,15 @@
     <item android:state_pressed="true">
         <shape>
             <solid android:color="@color/themeColor" />
+
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <solid android:color="@color/themeColor" />
+
+
             <corners android:radius="8dp" />
         </shape>
     </item>

@@ -82,6 +82,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/signup_button"
+            android:backgroundTint="@color/themeColor"
+
             android:paddingTop="16dp"
             android:paddingBottom="16dp" />
 
