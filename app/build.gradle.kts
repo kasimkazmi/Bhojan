@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bhojan"
+    namespace = "com.bhojan"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.bhojan"
+        applicationId = "com.bhojan"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

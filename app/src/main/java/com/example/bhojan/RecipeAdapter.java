@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bhojan.R;
+
 import java.util.List;
 
 public  class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
